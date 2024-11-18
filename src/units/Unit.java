@@ -1,5 +1,4 @@
-package textrpg;
+package units;
 
 public class Unit {
-
 }
