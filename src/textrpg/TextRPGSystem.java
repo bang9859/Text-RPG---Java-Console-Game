@@ -7,7 +7,11 @@ public class TextRPGSystem {
 
 	private static TextRPGSystem instance = new TextRPGSystem();
 
-	public TextRPGSystem getInstance() {
+	public static TextRPGSystem getInstance() {
 		return instance;
+	}
+	
+	public void run() {
+		
 	}
 }
