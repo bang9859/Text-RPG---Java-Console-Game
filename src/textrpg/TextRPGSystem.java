@@ -5,7 +5,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.nio.Buffer;
+import users.Guild;
+import users.User;
 
 public class TextRPGSystem {
 
@@ -23,10 +24,12 @@ public class TextRPGSystem {
 	private final int BACK = 0;
 
 	private boolean isRun = true;
-
-	private StringBuffer buffer = new StringBuffer();
-	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	private BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+	
+	private Guild guild = Guild.getInstance();
+	private User user = User.getInstance();
+	private static StringBuffer buffer = new StringBuffer();
+	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	private static BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
 	private TextRPGSystem() {
 
@@ -109,6 +112,7 @@ public class TextRPGSystem {
 	}
 
 	private void setGame() {
+		guild.setGuild();
 		printConsole("===[더조은 RPG]===");
 		printConsole("게임을 시작하시려면 엔터를 눌러주세요.");
 		while (true) {
@@ -129,7 +133,7 @@ public class TextRPGSystem {
 		}
 	}
 
-	private Object input(String msg, int number) {
+	public Object input(String msg, int number) {
 		printConsole(msg + " : ");
 		String input = "";
 		try {
@@ -151,7 +155,7 @@ public class TextRPGSystem {
 
 	}
 
-	private void printConsole(String msg) {
+	public void printConsole(String msg) {
 		buffer.setLength(0);
 		buffer.append(msg + "\n");
 		try {
