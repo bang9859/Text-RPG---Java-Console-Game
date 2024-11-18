@@ -11,7 +11,9 @@ abstract public class Hero extends Unit{
 		this.level = level;
 		this.partiesCheck = partiesCheck;
 	}
-	
+	public boolean getPartiesCheck() {
+		return partiesCheck;
+	}
 	abstract public void HeroSkill();
 
 }
