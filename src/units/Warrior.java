@@ -2,9 +2,8 @@ package units;
 
 public class Warrior extends Hero{
 
-	public Warrior(String name, int hp, int power, int exp, int level) {
-		super(name, hp, power, exp, level);
-		// TODO Auto-generated constructor stub
+	public Warrior(String name, int hp, int power, int exp, int level,boolean partiesCheck) {
+		super(name, hp, power, exp, level, partiesCheck);
 	}
 
 	@Override

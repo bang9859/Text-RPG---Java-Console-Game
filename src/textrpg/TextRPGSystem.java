@@ -16,6 +16,12 @@ public class TextRPGSystem {
 	private final int SETTING = 2;
 	private final int EXIT = 0;
 
+	private final int GUILD = 1;
+	private final int PARTIES = 2;
+	private final int STORE = 3;
+	private final int INVENTORY = 4;
+	private final int BACK = 0;
+
 	private boolean isRun = true;
 
 	private StringBuffer buffer = new StringBuffer();
@@ -41,28 +47,64 @@ public class TextRPGSystem {
 
 	private void lobby() {
 		showLobbyMenu();
-		int sel = (int) input("입력", NUMBER) - 1;
+		int sel = (int) input("입력", NUMBER);
 		if (sel == DENGEON) {
 			dengeon();
 		} else if (sel == SETTING) {
 			setting();
 		} else if (sel == EXIT) {
 			isRun = false;
+		} else {
+			System.err.println("잘못된 입력입니다.");
 		}
 	}
 
 	private void setting() {
-		// TODO Auto-generated method stub
+		showSettingMenu();
+		int sel = (int) input("입력", NUMBER);
+		if (sel == GUILD) {
+			guild();
+		} else if (sel == PARTIES) {
+			pairties();
+		} else if (sel == STORE) {
+			store();
+		} else if (sel == INVENTORY) {
+			inventory();
+		} else if (sel == BACK) {
+			loading("로비로 돌아가는중...",1000);
+		} else {
+			System.err.println("잘못된 입력값입니다.");
+		}
+	}
 
+	private void inventory() {
+		
+	}
+
+	private void store() {
+		
+	}
+
+	private void pairties() {
+		
+	}
+
+	private void guild() {
+		
+	}
+
+	private void showSettingMenu() {
+		printConsole("===[설정]===");
+		printConsole("[1.길드] [2.파티] [3.상점] [4.창고] [0.뒤로가기]");
 	}
 
 	private void dengeon() {
-		// TODO Auto-generated method stub
-
+		loading("스테이지 불러오는중", 1000);
+		loading("던전 입장중....", 1000);
 	}
 
 	private void showLobbyMenu() {
-		printConsole("===[LOBBY]===");
+		printConsole("===[로비]===");
 		printConsole("[1.던전] [2.설정] [3.종료]");
 	}
 
