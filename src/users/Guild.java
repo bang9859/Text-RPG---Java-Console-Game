@@ -10,13 +10,6 @@ import units.Warrior;
 import units.Wizard;
 
 public class Guild {
-	private final int NUMBER = 1;
-	private final int STRING = 2;
-
-	private final int WARRIOR = 1;
-	private final int HEALER = 2;
-	private final int TANKER = 3;
-	private final int WIZARD = 4;
 	
 	private TextRPGSystem gameSystem = TextRPGSystem.getInstance();
 	private static Vector<Hero> guildList = new Vector<Hero>();
@@ -46,26 +39,8 @@ public class Guild {
 	public Vector<Hero> getGuildList() {
 		return guildList;
 	}
-	public void plusGuild() {
-		gameSystem.printConsole("직업선택");
-		gameSystem.printConsole("1) 전사");
-		gameSystem.printConsole("2) 힐러");
-		gameSystem.printConsole("3) 탱커");
-		gameSystem.printConsole("4) 마법사");
-		int sel = (int) gameSystem.input("입력", NUMBER);
-		String name = (String) gameSystem.input("이름: ", STRING);
-		if (sel == WARRIOR) {
-			guildList.add(new Warrior(name, 200, 30, 0, 1, false));
-		} else if (sel == HEALER) {
-			guildList.add(new Healer(name, 200, 30, 0, 1, false));
-		} else if (sel == TANKER) {
-			guildList.add(new Tanker(name, 200, 30, 0, 1, false));
-		} else if (sel == WIZARD) {
-			guildList.add(new Wizard(name, 200, 30, 0, 1, false));
-		} else {
-			System.err.println("잘못된 입력값입니다.");
-		}
-	}
+	
+	
 	
 	
 }

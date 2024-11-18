@@ -12,19 +12,20 @@ import units.Wizard;
 public class User {
 	private final int NUMBER = 1;
 	private final int STRING = 2;
+	
+	private final int WARRIOR = 1;
+	private final int HEALER = 2;
+	private final int TANKER = 3;
+	private final int WIZARD = 4;
+	
 
 	private int posX = 1;
 	private int money = 100000;
 
-	private Guild guild = Guild.getInstance();
+	private static Guild guild = Guild.getInstance();
 	private TextRPGSystem gameSystem = TextRPGSystem.getInstance();
-	private Vector<Hero> userGuildList = guild.getGuildList();
+	private static Vector<Hero> userGuildList = guild.getGuildList();
 	
-	Warrior warrior = new Warrior("전사", 200, 30, 0, 1, false);
-	Healer healer = new Healer("힐러", 100, 20, 0, 1, false);
-	Tanker tanker = new Tanker("탱커", 400, 20, 0, 1, false);
-	Wizard wizard = new Wizard("마법사", 150, 500, 0, 1, false);
-
 	private User() {
 	}
 
@@ -34,6 +35,10 @@ public class User {
 		return instance;
 	}
 
+	public Vector<Hero> getUserGuildList(){
+		return userGuildList;
+	} 
+	
 	public int getPosX() {
 		return posX;
 	}
@@ -48,5 +53,26 @@ public class User {
 
 	public void setMoney(int money) {
 		this.money = money;
+	}
+	
+	public void plusGuild() {
+		gameSystem.printConsole("직업선택");
+		gameSystem.printConsole("1) 전사");
+		gameSystem.printConsole("2) 힐러");
+		gameSystem.printConsole("3) 탱커");
+		gameSystem.printConsole("4) 마법사");
+		int sel = (int) gameSystem.input("입력", NUMBER);
+		String name = (String) gameSystem.input("이름: ", STRING);
+		if (sel == WARRIOR) {
+			userGuildList.add(new Warrior(name, 200, 30, 0, 1, false));
+		} else if (sel == HEALER) {
+			userGuildList.add(new Healer(name, 200, 30, 0, 1, false));
+		} else if (sel == TANKER) {
+			userGuildList.add(new Tanker(name, 200, 30, 0, 1, false));
+		} else if (sel == WIZARD) {
+			userGuildList.add(new Wizard(name, 200, 30, 0, 1, false));
+		} else {
+			System.err.println("잘못된 입력값입니다.");
+		}
 	}
 }
