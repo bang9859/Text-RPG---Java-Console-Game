@@ -12,6 +12,10 @@ public class TextRPGSystem {
 	private final int STRING = 1;
 	private final int NUMBER = 2;
 
+	private final int DENGEON = 1;
+	private final int SETTING = 2;
+	private final int EXIT = 0;
+
 	private boolean isRun = true;
 
 	private StringBuffer buffer = new StringBuffer();
@@ -31,14 +35,49 @@ public class TextRPGSystem {
 	public void run() {
 		setGame();
 		while (isRun) {
-
+			lobby();
 		}
 	}
 
-	private void setGame() {
+	private void lobby() {
+		showLobbyMenu();
+		int sel = (int) input("입력", NUMBER) - 1;
+		if (sel == DENGEON) {
+			dengeon();
+		} else if (sel == SETTING) {
+			setting();
+		} else if (sel == EXIT) {
+			isRun = false;
+		}
+	}
+
+	private void setting() {
+		// TODO Auto-generated method stub
 
 	}
-	
+
+	private void dengeon() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void showLobbyMenu() {
+		printConsole("===[LOBBY]===");
+		printConsole("[1.던전] [2.설정] [3.종료]");
+	}
+
+	private void setGame() {
+		printConsole("===[더조은 RPG]===");
+		printConsole("게임을 시작하시려면 엔터를 눌러주세요.");
+		while (true) {
+			String input = (String) input("입력", STRING);
+			if (input.equals("")) {
+				break;
+			}
+		}
+		loading("게임 접속중...", 1000);
+	}
+
 	private void loading(String msg, int sleepNum) {
 		printConsole(msg);
 		try {
