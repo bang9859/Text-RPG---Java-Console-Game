@@ -4,7 +4,7 @@ package textrpg;
 public class Main {
 
 	public static void main(String[] args) {
-		TestRPGSystem game = TestRPGSystem.getInstance();
+		TextRPGSystem game = TextRPGSystem.getInstance();
 		game.run();
 	}
 
