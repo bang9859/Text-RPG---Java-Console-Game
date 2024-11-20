@@ -6,11 +6,13 @@ import textrpg.TextRPGSystem;
 import units.Hero;
 
 public class Party {
+	private final int SIZE = 3;
+	private final int NUMBER =2;
 	private Guild guild = Guild.getInstance();
 	private User user = User.getInstance();
 	private TextRPGSystem gameSystem = TextRPGSystem.getInstance();
 	private static Vector<Hero> parties;
-
+	
 	public void getPartyMember() {
 		for (int i = 0; i < user.getUserGuildList().size(); i++) {
 			if (user.getUserGuildList().get(i).getPartiesCheck())
@@ -20,7 +22,26 @@ public class Party {
 
 	public void partiChange() {
 		showParties();
+		Hero changeTarget = pickChangeParty();
 		showGuild();
+		Hero target = pickGuild();
+		change(changeTarget,target);
+	}
+
+	private void change(Hero changeTarget, Hero target) {
+		changeTarget.setPartiesCheck(false);
+		target.setPartiesCheck(true);
+		gameSystem.printConsole("교체완료");
+	}
+
+	private Hero pickGuild() {
+		int sel = (int)gameSystem.input("파티에 넣을 유닛",NUMBER);
+		return guild.getGuildList().get(sel);
+	}
+
+	private Hero pickChangeParty() {
+		int sel = (int)gameSystem.input("입력",NUMBER);
+		return parties.get(sel);
 	}
 
 	private void showGuild() {

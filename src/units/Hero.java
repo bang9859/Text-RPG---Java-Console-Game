@@ -14,6 +14,9 @@ abstract public class Hero extends Unit{
 	public boolean getPartiesCheck() {
 		return partiesCheck;
 	}
+	public void setPartiesCheck(boolean partiesCheck) {
+		this.partiesCheck=partiesCheck;
+	}
 	abstract public void HeroSkill();
-
+	
 }
