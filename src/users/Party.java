@@ -6,7 +6,6 @@ import textrpg.TextRPGSystem;
 import units.Hero;
 
 public class Party {
-	private final int SIZE = 3;
 	private final int NUMBER =2;
 	private Guild guild = Guild.getInstance();
 	private User user = User.getInstance();
